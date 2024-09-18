@@ -16,15 +16,15 @@ pipeline {
         }
         stage ("Generate backend image") {
             steps {
-                dir("exp4spring") {
+                dir("backend") {
                     sh "mvn clean install"
-                    sh "docker build -t exp4spring ."
+                    sh "docker build -t backend ."
                 }
             }
         }
         stage ("Run docker compose") {
             steps {
-                dir("exp4spring") {
+                dir("backend") {
                     sh "docker compose up -d"
                 }
             }
